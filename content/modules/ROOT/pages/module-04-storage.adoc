@@ -85,7 +85,7 @@ image::2025_spring/module-04-storage/08_VM_Restore_Disabled.png[link=self, windo
 +
 image::2025_spring/module-04-storage/09_Console_Login.png[link=self, window=blank, width=100%]
 +
-NOTE: *사용자 이름* 과 *암호* 옆에 복사 아이콘이 있고 *콘솔에 붙여넣기* 버튼도 `모두` 사용할 수 있어 로그인 과정이 훨씬 간편해집니다.
+NOTE: *사용자 이름* 과 *암호* 옆에 복사 아이콘이 있고 *콘솔에 붙여넣기* 버튼도 모두 사용할 수 있어 로그인 과정이 훨씬 간편해집니다.
 
 . 로그인 후 다음 명령어를 실행하세요:
 +
