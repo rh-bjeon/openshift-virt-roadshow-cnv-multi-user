@@ -21,10 +21,10 @@
 ** xref:module-04-storage.adoc#managing_snapshots[스냅샷 관리]
 ** xref:module-04-storage.adoc#clone_vm[가상 머신 복제]
 
-* xref:module-05-bcdr.adoc[Backup and Recovery for Virtual Machines]
-** xref:module-05-bcdr.adoc#review_operator[Review the OADP Operator]
-** xref:module-05-bcdr.adoc#create_backup[Create a Virtual Machine Backup]
-** xref:module-05-bcdr.adoc#restore_backup[Restore From a Backup]
+* xref:module-05-bcdr.adoc[가상 머신 백업 및 복구]
+** xref:module-05-bcdr.adoc#review_operator[OADP Operator 검토]
+** xref:module-05-bcdr.adoc#create_backup[가상 머신 백업 생성]
+** xref:module-05-bcdr.adoc#restore_backup[백업에서 복원]
 
 * xref:module-07-tempinst.adoc[Template and InstanceType Management]
 ** xref:module-07-tempinst.adoc#clone_customize_template[Clone and Customize a Template]
