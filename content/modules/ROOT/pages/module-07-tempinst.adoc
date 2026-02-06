@@ -55,15 +55,15 @@ image::2025_spring/module-07-tempinst/04_Clone_Template_Options.png[link=self, w
 +
 image::2025_spring/module-07-tempinst/05_Clone_Details.png[link=self, window=blank, width=100%]
 
-. CPU와 메모리 용량을 편집할 수 있는 새 창이 나타납니다. 사용자 지정 템플릿의 경우 CPU 값을 2로, 메모리 값을 4GiB로 설정한 다음 `저장` 버튼을 클릭하세요.
+. [수정 필요!!] CPU와 메모리 용량을 편집할 수 있는 새 창이 나타납니다. 사용자 지정 템플릿의 경우 CPU 값을 2로, 메모리 값을 4GiB로 설정한 다음 `저장` 버튼을 클릭하세요.
 +
 image::2025_spring/module-07-tempinst/06_Edit_CPU_Mem.png[link=self, window=blank, width=100%]
 
-. Next click on the *Scripts* tab at the top, and in the section called *Cloud-init* click the *Edit* button.
+. 다음으로 상단의 `Scripts` 탭을 클릭하고 *Cloud-init* 섹션에서 `편집` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/09_Scripts_CloudInit.png[link=self, window=blank, width=100%]
 
-. When the *Cloud-init* dialog opens, click the radio button to *Configure via: Script* then *replace* the YAML with the following YAML snippet.
+. *Cloud-init* 대화 상자가 열리면 *다음을 사용하여 설정:* 항목의 `스크립트` 버튼을 클릭한 다음, YAML 편집기에 아래의 YAML 코드를 붙여넣기 합니다.
 +
 [source,yaml,role=execute]
 ----
@@ -81,17 +81,17 @@ userData: |-
 +
 image::2025_spring/module-07-tempinst/10_Cloud_Init_Script.png[link=self, window=blank, width=100%]
 
-. Click the *Save* button, you will see a green *Saved* prompt, then follow that by clicking the *Apply* button.
+. `저장` 버튼을 클릭하면 녹색의 `저장됨` 메시지가 나타나고, 그 다음 `적용` 버튼을 클릭하세요.
 
-. Now click on the *Catalog* item on the left-side menu, select the *Template catalog* option, followed by *User templates*. You should see your created template available as a tile.
+. 이제 왼쪽 메뉴에서 `카탈로그` 항목을 클릭하고 `템플릿 카탈로그` 옵션을 선택한 다음 `사용자 템플릿` 을 선택하세요. 그러면 조금 전 생성한 템플릿이 타일 형태로 표시될 것입니다.
 +
 image::2025_spring/module-07-tempinst/11_User_Templates.png[link=self, window=blank, width=100%]
 
-. Click on the tile and you will be prompted with the VM startup screen. Click the *Quick create VirtualMachine* button.
+. 타일을 클릭하면 VM 시작 화면이 나타납니다. *가상 머신 빠른 생성* 버튼을 클릭하세요.
 +
 image::2025_spring/module-07-tempinst/12_Quick_Create_Template.png[link=self, window=blank, width=100%]
 
-. When the virtual machine boots you can see on the *Overview* page that it was created from our template, and has the additional resources we defined. We just need to verify that it installed *MariaDB* for us.
+. 가상 머신이 부팅되면 *개요* 페이지에서 해당 가상 머신이 저희 템플릿을 기반으로 생성되었고, 저희가 정의한 추가 리소스가 포함되어 있음을 확인할 수 있습니다. 이제 *MariaDB* 가 제대로 설치되었는지 확인하기만 하면 됩니다.
 +
 image::2025_spring/module-07-tempinst/13_VM_From_Template.png[link=self, window=blank, width=100%]
 
