@@ -111,7 +111,7 @@ image::2025_spring/module-07-tempinst/15_MariaDB_Login.png[link=self, window=bla
 . *Ctrl+D* 키를 두 번 눌러 가상 머신에서 로그아웃하세요.
 
 [[create_win]]
-== Windows VM 템플릿 생성
+== Windows VM 템플릿
 
 이번 실습에서는 웹 서버에 호스팅된 ISO 파일을 사용하여 Microsoft Windows Server 2019를 설치해 보겠습니다. 이는 웹 서버, 객체 스토리지 또는 클러스터 내의 다른 영구 볼륨 등 여러 위치에서 디스크를 가져와 가상 머신에 운영 체제를 설치하는 한 가지 방법을 보여줍니다.
 
