@@ -95,11 +95,11 @@ image::2025_spring/module-07-tempinst/12_Quick_Create_Template.png[link=self, wi
 +
 image::2025_spring/module-07-tempinst/13_VM_From_Template.png[link=self, window=blank, width=100%]
 
-. Click on the *Console* tab at the top and use the *Guest login credentials* that are provided and the *Copy* and *Paste to console* buttons to log into the console of the virtual machine.
+. 상단의 `콘솔` 탭을 클릭하고 제공된 *게스트 로그인 인증 정보* 와 *복사* 및 *콘솔에 붙여넣기* 버튼을 사용하여 가상 머신의 콘솔에 로그인하십시오.
 +
 image::2025_spring/module-07-tempinst/14_VM_Console.png[link=self, window=blank, width=100%]
 
-. Once you are logged into the virtual machine, run the following command to test the install of MariaDB.
+. 가상 머신에 로그인한 후 다음 명령어를 실행하여 MariaDB 가 설치되었는지 테스트하십시오.
 +
 [source,sh,role=execute]
 ----
@@ -108,60 +108,62 @@ sudo mysql -u root
 +
 image::2025_spring/module-07-tempinst/15_MariaDB_Login.png[link=self, window=blank, width=100%]
 
-. Hit *Ctrl-D* twice to log out of the VM.
+. *Ctrl+D* 키를 두 번 눌러 가상 머신에서 로그아웃하세요.
 
 [[create_win]]
-== Create a Windows VM Template
+== Windows VM 템플릿 생성
 
-In this segment of our lab, we will install Microsoft Windows Server 2019 using an ISO hosted on a web server. This represents one way to install an operating system to a virtual machine that takes advantage of the ability to source disks from many locations, including a web server, object storage, or other persistent volumes in the cluster.
+이번 실습에서는 웹 서버에 호스팅된 ISO 파일을 사용하여 Microsoft Windows Server 2019를 설치해 보겠습니다. 이는 웹 서버, 객체 스토리지 또는 클러스터 내의 다른 영구 볼륨 등 여러 위치에서 디스크를 가져와 가상 머신에 운영 체제를 설치하는 한 가지 방법을 보여줍니다.
 
-This process can be streamlined after the initial operating system installation by creating a cloned root disk from a sysprepped virtual machine to use with other templates. 
+이 과정은 초기 운영 체제 설치 후 Sysprep이 적용된 가상 머신에서 root 디스크를 복제하여 다른 템플릿과 함께 사용하면 간소화할 수 있습니다. 
 
-NOTE: The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
+NOTE: 템플릿으로 사용할 게스트 운영 체제를 준비하는 구체적인 프로세스는 조직마다 다를 수 있으므로 템플릿 운영 체제를 준비할 때는 조직의 지침 및 요구 사항을 반드시 준수하십시오.
 
-. From the left menu, navigate to *Catalog*, and click on the *Template catalog* tab near the top..
+. 왼쪽 메뉴에서 `카탈로그` 로 이동한 다음 상단에 있는 `템플릿 카탈로그` 탭을 클릭하세요.
 
-. Type the word *win* in the search bar, or scroll down until you find the *Microsoft Windows Server 2019 VM* tile.
+. 검색창에 *win* 이라는 단어를 입력하거나, *Microsoft Windows Server 2019 VM* 타일이 나타날 때까지 아래로 스크롤하십시오.
 +
 image::2025_spring/module-07-tempinst/16_Windows_2k19_Tile.png[link=self, window=blank, width=100%]
 
-. A dialog will appear showing the default configuration related to the template.
+. 템플릿과 관련된 기본 구성을 보여주는 대화 상자가 나타납니다.
 +
-NOTE: Notice that there is intially no option to quick create this VM because there is no provided boot source. We must customize the VM to fit our needs.
+NOTE: 기본적으로 Windows2019 부팅 소스가 제공되지 않기 때문에 이 가상 머신을 빠르게 생성하는 옵션이 없다는 점에 유의하십시오. 필요에 맞게 가상 머신을 직접 생성해야 합니다.
+
+NOTE: 실제 운영 환경에서는 부팅 소스를 생성하기 위해 Windows 가상 머신을 미리 생성하여, 해당 볼륨을 Windows 부팅 소스로 활용 가능합니다.
 +
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
-. In this dialog:
-* Specify the name *win-sysprep*
-* Enable the checkbox *Boot from CD*
-* Choose *URL (creates PVC)* from the drop-down menu
-* Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
-* Reduce the CD disk size to *5 GiB*
-* Keep the *Disk source* as *Blank* and the size set to the default value *60 GiB*
-* Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
+. 다음 단계를 수행하세요:
+* 이름을 *win-sysprep* 으로 지정합니다.
+* *CD에서 부팅* 체크박스에 체크합니다.
+* 드롭다운 메뉴에서 *URL (PVC 생성)* 을 선택합니다.
+* *이미지 URL* 을 지정합니다: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
+* CD 디스크 크기를 *5GiB* 로 줄입니다.
+* *디스크 소스* 는 *빈 디스크* 로 유지하고 크기는 기본값인 *60GiB* 로 설정합니다.
+* *Windows 드라이버 디스크 마운트* 체크박스가 체크되어 있는지 확인합니다. **VirtIO용 드라이버를 제공하는 Windows 시스템을 설치하려면 이 작업이 필요합니다.**
 +
 
-. With the options filled out, we want to click on the *Customize VirtualMachine* button at the bottom to continue configuring our Template.
+. 위의 옵션을 모두 입력했으면 하단의 `VirtualMachine 사용자 정의` 버튼을 클릭하여 템플릿 구성을 계속 진행합니다.
 +
 image::2025_spring/module-07-tempinst/18_Windows_2k19_Parameters.png[link=self, window=blank, width=100%]
 
-. On the *Customize and create VirtualMachine* screen, click on the edit pencil by the *Boot mode* option. 
+. *VirtualMachine 사용자 정의 및 생성* 화면에서 *부팅 모드* 옵션 옆에 있는 편집 연필 아이콘을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/19_Boot_Mode.png[link=self, window=blank, width=100%]
 
-. When the *Boot mode* menu pops up, select the *BIOS* boot mode from the drop-down menu and click the *Save* button.
+. *부팅 모드* 메뉴가 나타나면 드롭다운 메뉴에서 *BIOS* 부팅 모드를 선택하고 `저장` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/19a_Boot_BIOS.png[link=self, window=blank, width=100%]
 
-. Now click on the *Scripts* tab, and then scroll down to the *Sysprep* section and click on the *Edit* button.
+. 이제 `Scripts` 탭을 클릭한 다음 아래로 스크롤하여 *Sysprep* 섹션을 찾고 `편집` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/20_Customize_Scripts.png[link=self, window=blank, width=100%]
 
-. A new window will pop up for you to create *Sysprep* actions for your new template.
+. 새 템플릿에 대한 *Sysprep* 작업을 생성할 수 있는 새 창이 나타납니다.
 +
 image::2025_spring/module-07-tempinst/21_Sysprep.png[link=self, window=blank, width=100%]
 
-. Copy and paste the following code block, which helps to automate the installation and configuration of the Windows server into the *autounattend.xml* section:
+. Windows 서버 설치 및 구성을 자동화하는 데 도움이 되는, 아래의 코드를 복사하여 *autounattend.xml* 섹션에 붙여넣으십시오.:
 +
 [source,xml,role=execute]
 ----
@@ -302,115 +304,116 @@ image::2025_spring/module-07-tempinst/21_Sysprep.png[link=self, window=blank, wi
 </unattend>
 ----
 
-. Once the code is pasted, click the *Save* button on the dialog.
+. 코드를 붙여넣은 후 대화 상자에서 `저장` 버튼을 클릭하세요.
 +
 image::2025_spring/module-07-tempinst/22_Windows_2k19_Sysprep.png[link=self, window=blank, width=100%]
 
-. With the Sysprep in place, click the *Create VirtualMachine* button at the bottom of the screen.
+. Sysprep 구성이 완료되면 화면 하단의 `VirtualMachine 생성` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/23_Create_VirtualMachine.png[link=self, window=blank, width=100%]
 
-. The Virtual Machine will start the provisioning process by downloading the ISO image, configuring, and starting the instance.
+. 가상 머신은 ISO 이미지를 다운로드하고, 구성을 완료한 후, 인스턴스를 시작하여 프로비저닝 프로세스를 시작합니다.
 +
 image::2025_spring/module-07-tempinst/24_Windows_2k19_Provisioning.png[link=self, window=blank, width=100%]
 
-. This process may take a few minutes due to needing to download the boot ISO image. You can check on the progress of the download by clicking the *Diagnostics* tab.
+. 부팅 ISO 이미지를 다운로드해야 하므로 이 과정은 몇 분 정도 소요될 수 있습니다. `진단` 탭을 클릭하면 다운로드 진행 상황을 확인할 수 있습니다.
 +
 image::2025_spring/module-07-tempinst/25_CD_Import.png[link=self, window=blank, width=100%]
 
-. After a few moments, the virtual machine will start, and the status will change to *Running*. Click  to the *Console* tab to view the autoattend installation process:
+. 잠시 후 가상 머신이 시작되고 상태가 *Running* 으로 변경됩니다. `콘솔` 탭을 클릭하여 자동 설치 프로세스를 확인하세요.:
 +
 image::2025_spring/module-07-tempinst/26_Windows_2k19_Console.png[link=self, window=blank, width=100%]
 
-. Once the VM installation process is complete (provisioning will take 3-5 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button.
+. VM 설치 프로세스가 완료되면 (프로비저닝에는 3~5분, 시작 및 구성에는 약 10분 소요) 정지 버튼을 눌러 전원을 끄십시오.
 +
 image::2025_spring/module-07-tempinst/27_Stop_Button.png[link=self, window=blank, width=100%]
 
-. With the machine powered down we want to make a clone of the root volume that we can use for future Windows template-based installs, without having to run through the customization process each time.
+. 컴퓨터 전원을 끈 상태에서 루트 볼륨의 복제본을 만들어 향후 Windows 템플릿 기반 설치 시 매번 사용자 지정 과정을 거치지 않고도 사용할 수 있도록 하려고 합니다.
 
-. On the left-side menu, click on *Storage* and then *PersistentVolumeClaims* to see a list of PVCs available in the *vmexamples-{user}* namespace. 
+. 왼쪽 메뉴에서 *스토리지* 를 클릭한 다음 *영구 볼륨 클레임* 을 클릭하면 *vmexamples-{user}* 네임스페이스에서 사용 가능한 PVC 목록을 볼 수 있습니다.
 
-. Find the *win-sysprep* PVC created with our installation, and using the three-dot menu on the right select *Clone PVC*.
+. 저희 설치 과정에서 생성된 *win-sysprep* PVC 파일을 찾고, 오른쪽에 있는 세 점 메뉴 `⋮` 를 사용하여 *PVC 복제* 를 선택하십시오.
 +
 image::2025_spring/module-07-tempinst/28_Storage_PVC.png[link=self, window=blank, width=100%]
 
-. On the menu that pops up, fill in the following options, then click the *Clone* button:
-* *Name*: windows-2k19-sysprep-template
-* *Access mode*:  Shared access (RWX) 
-* *StorageClass*: ocs-external-storagecluster-ceph-rbd-immediate 
+. 팝업 메뉴에서 다음 옵션을 입력한 다음 `복제` 버튼을 클릭합니다:
+* *이름*: windows-2k19-sysprep-template
+* *엑세스 모드*: 공유 엑세스(RWX) 
+* *스토리지 클래스*: ocs-external-storagecluster-ceph-rbd-immediate 
 +
 image::2025_spring/module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
-. Once this is saved, you can use it to quickly create Windows VMs in the future.
+. 이렇게 저장해 두면 나중에 Windows 가상 머신을 빠르게 생성하는 데 사용할 수 있습니다.
 
-. Return to the *Catalog* menu item, and use this cloned PVC as a boot source for quick-creating new virtual machines by selecting the option for *PVC (clone PVC)* as the *Disk source*, and selecting the *Windows-2k19-Sysprep-Template* PVC as the *PVC name* to clone, and click the *Customize VirtualMachine* button to configure boot mode *BIOS* instead *UEFI*.
+. `카탈로그` 메뉴 항목으로 돌아가서, `템플릿 카탈로그` 탭 메뉴에서 *Microsoft Windows Server 2019 VM* 템플릿을 다시 선택합니다. *디스크 소스* 로 *PVC(클론 PVC)* 옵션을 선택하고, *PVC 프로젝트* 를 *vmexamples-{user}* 로 선택하고, *PVC 이름* 으로 *Windows-2k19-Sysprep-Template* PVC를 선택한 다음, 하단의 `VirtualMachine 사용자 정의` 버튼을 클릭하여 부팅 모드를 *UEFI* 대신 *BIOS* 로 구성함으로써 새 가상 머신을 빠르게 생성할 수 있습니다.
 +
 image::2025_spring/module-07-tempinst/30_Windows_Template.png[link=self, window=blank, width=100%]
 
-. Configure BIOS and press *Create VirtualMachine*
+. BIOS를 구성하고 `VirtualMachine 생성` 을 누르십시오.
 +
 image::2025_spring/module-07-tempinst/31_Windows_Template_BIOS.png[link=self, window=blank, width=100%]
 
-. In a few moments the new Windows Server 2019 virtual machine will boot up from our cloned PVC.
+. 잠시 후 새 Windows Server 2019 가상 머신이 부팅됩니다.
 +
 image::2025_spring/module-07-tempinst/32_Windows_Template_Running.png[link=self, window=blank, width=100%]
 
 [[instance_types]]
-== Introduction to Instance Types
+== 인스턴스 유형 (InstanceType) 소개
 
-In order to simplify the deployment process for virtual machines, starting with OpenShift 4.14 the default configuration mechanism was changed to emphasize the use of *Instance Types*. An instance type is a reusable object where you can define resources and characteristics to apply to a new VM. You can define custom instance types or use the variety that are included when you install OpenShift Virtualization when provisioning your own VM. This is much more akin to what users experience when using a self-service catalog in popular cloud providers.
+가상 머신 배포 프로세스를 간소화하기 위해 OpenShift 4.14부터 기본 구성 메커니즘이 *InstanceType* 사용을 강조하도록 변경되었습니다. 인스턴스 유형은 새 VM에 적용할 리소스와 특성을 정의할 수 있는 재사용 가능한 오브젝트입니다. 사용자 지정 인스턴스 유형을 정의하거나 OpenShift Virtualization을 설치할 때 포함된 다양한 유형을 사용하여 VM을 프로비저닝할 수 있습니다. 이는 인기 있는 클라우드 제공업체의 셀프 서비스 카탈로그를 사용할 때 사용자가 경험하는 것과 훨씬 더 유사합니다.
 
-This section explores provisioning a VM using an instance type.
+이 실습 섹션에서는 인스턴스 유형(InstanceType)을 사용하여 VM을 프로비저닝하는 방법을 살펴봅니다.
 
-. To get started click on *Catalog* on the left-side menu. You will see the default catalog item is *InstanceType*.
+. 시작하려면 왼쪽 메뉴에서 *카탈로그*를 클릭합니다. 기본 카탈로그 항목은 *InstanceTypes* 입니다.
 +
 image::2025_spring/module-07-tempinst/33_Left_Menu_Catalog.png[link=self, window=blank, width=100%]
 
-. The first step in using an instance type is to select a volume to boot from. Similar to the templates that provide boot sources, these boot sources are available to use for guests provisioned with an InstanceType. You can see the included volumes by selecting the *openshift-virtualization-os-images* project, or you can upload your own with the *Add volume* button.
+. 인스턴스 유형을 사용하는 첫 번째 단계는 부팅할 볼륨을 선택하는 것입니다. 부팅 소스를 제공하는 템플릿과 유사하게, 이러한 부팅 소스는 인스턴스 유형으로 프로비저닝된 게스트에서 사용할 수 있습니다. 포함된 볼륨은 *openshift-virtualization-os-images* 프로젝트를 선택하여 확인할 수 있으며, *볼륨 추가* 버튼을 사용하여 자체 볼륨을 업로드할 수도 있습니다.
 +
 image::2025_spring/module-07-tempinst/34_Volume_Boot.png[link=self, window=blank, width=100%]
 
-. Click on the *rhel9* boot volume to select it as the volume type to boot from. Selecting it will be denoted by a small vertical blue line to the left of the image name and the name itself being changed to a bold font.
+. *rhel9* 부팅 볼륨을 클릭하십시오. 선택되면 이미지 이름의 바탕색이 회색으로 표시되며, 이름이 굵은 글꼴로 변경됩니다.
 +
 image::2025_spring/module-07-tempinst/35_Select_RHEL9.png[link=self, window=blank, width=100%]
 
-. Next you can select the instance type you would like to use. There are Red Hat provided instance types by default, or you can create your own for your specific use case. If you hover over a provided instance type you can see a description of its intended use.
+. 다음으로 사용할 인스턴스 유형을 선택할 수 있습니다. 기본적으로 Red Hat에서 제공하는 인스턴스 유형이 있으며, 특정 사용 사례에 맞게 직접 인스턴스 유형을 만들 수도 있습니다. 제공된 인스턴스 유형 위에 마우스를 올리면 해당 유형의 용도에 대한 설명을 볼 수 있습니다.
 +
 image::2025_spring/module-07-tempinst/36_Select_InstanceType.png[link=self, window=blank, width=100%]
 +
-* The Red Hat provided instance types are intended for the following uses:
-** *N series*: Designed for network intensive DPDK workloads like VNFs.
-** *O series*: Specialized general purpose instance type with memory overcommit preconfigured.
-** *CX series*: Designed for compute intensive workloads by requesting additional dedicated CPUs for additional function offload.
-** *U series*: The most general purpose or "universal" instance type.
-** *M series*: Designed for memory intensive workloads.
+* Red Hat에서 제공하는 인스턴스 유형은 다음과 같은 용도로 사용됩니다:
+** *N series*: VNF와 같은 네트워크 집약적인 DPDK 워크로드에 적합합니다.
+** *O series*: 메모리 오버커밋이 사전 구성된 특수한 범용 인스턴스 유형입니다.
+** *M series*: 메모리 집약적인 워크로드에 적합합니다.
+** *RT series*: 실시간 "realtime" 애플리케이션을 위한 리소스를 제공합니다. 이 인스턴스 유형을 사용하려면 실시간 애플리케이션을 실행할 수 있는 노드가 필요합니다.
+** *CX series*: 추가 기능 오프로드를 위해 전용 CPU를 요청하여 컴퓨팅 집약적인 워크로드에 적합하도록 설계되었습니다.
+** *U series*: 가장 일반적인 "범용" 인스턴스 유형입니다.
 
-. Click on the *U series* tile to see a dropdown list of defined resources for general instance types. The default option here is *medium: 1 CPUs, 4 GiB Memory*. Select it. Again selection will be indicated by a blue line, and a bolding of the font for the instance type.
+. *U series* 타일을 클릭하면 일반 인스턴스 유형에 대해 정의된 리소스 목록이 드롭다운 메뉴로 표시됩니다. 기본 옵션은 *medium: 1 CPU, 4GiB 메모리* 입니다. 이 옵션을 선택하세요. 선택되면 파란색 선이 표시되고 해당 인스턴스 유형의 글꼴이 굵게 표시됩니다.
 +
 image::2025_spring/module-07-tempinst/37_InstanceType_Resources.png[link=self, window=blank, width=100%]
 
-. The last section that needs to be completed when provisioning using an instance type is similar to the template section. You need to provide a name for the virtual machine, and select the storage class to be used for a backing disk. By default, a name will be generated for the VM, and the default storage class will be selected. When you are satisfied, click the *Create VirtualMachine* button.
+. 인스턴스 유형을 사용하여 프로비저닝할 때 마지막으로 완료해야 하는 작업은 템플릿의 작업와 유사합니다. 가상 머신의 이름을 지정하고 백업 디스크에 사용할 스토리지 클래스를 선택해야 합니다. 기본적으로 가상 머신의 이름은 자동으로 생성되고 기본 스토리지 클래스가 선택됩니다. 모든 설정이 완료되면 `VirtualMachine 생성` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/38_VM_Details.png[link=self, window=blank, width=100%]
 
-. You will be directed to the virtual machine overview page, and see that the VM provisioned using an instance type is now up and running.
+. 가상 머신 개요 페이지로 이동하게 되며, 인스턴스 유형을 사용하여 프로비저닝된 VM이 현재 실행 중인 것을 확인할 수 있습니다.
 +
 image::2025_spring/module-07-tempinst/39_VM_Overview.png[link=self, window=blank, width=100%]
 
 [[cleanup]]
-== Cleanup
+== 환경 정리
 
-To save resources for the next lab, please stop any VMs that you created in this module.
+다음 실습을 위해 리소스를 절약하려면 이 모듈에서 생성한 모든 가상 머신(VM)을 중지하십시오.
 
-. Navigate to *Virtualization* perspective in the left-side menu and then click on *Virtualmachines*.
-. Each project that you have access to that is hosting VM workloads will be listed in the center column treeview. (At a minimum you should expand projects *vmimported-{user}* and *vmexamples-{user}* to check virtual machine status.)
-. If any VMs are showing a status of *Running*, highlight the VM in the center tree column, and select the *Stop* button or option from the *Actions* dropdown menu..
+. 왼쪽 메뉴에서 *가상화* 관점으로 이동한 다음 *가상 머신* 을 클릭합니다.
+. 가상 머신 워크로드를 호스팅하는 액세스 권한이 있는 각 프로젝트가 가운데 트리 뷰에 표시됩니다. (최소한 *vmimported-{user}* 및 *vmexamples-{user}* 프로젝트를 확장하여 가상 머신 상태를 확인해야 합니다.)
+. *Running* 상태로 표시되는 VM이 ​​있으면 가운데 트리뷰에서 해당 VM을 선택하고 *동작* 드롭다운 메뉴에서 *중지* 를 누릅니다.
 
-Now all VMs should be in *Stopped* state.
+이제 모든 VM이 *Stopped* 상태가 됩니다.
 
 image::2025_spring/module-07-tempinst/40_All_Stopped.png[link=self, window=blank, width=100%]
 
 
-== Summary
+== 요약
 
-In this section we learned how to clone and customize an existing template to create one that can be used for specific workloads like databases. We also learned how to configure one of the existing Windows templates that exists without a boot source, and automate it's installation process, so we can create future deployments easily by cloning the installation PVC that was created with that VM. We also introduced how to make use of instance types to further customize our virtual machines for specific workloads for a more cloud-like experience.
+이 섹션에서는 기존 템플릿을 복제하고 사용자 정의로 수정하여 데이터베이스와 같은 특정 워크로드에 사용할 수 있는 템플릿을 만드는 방법을 배웠습니다. 또한 부팅 소스가 없는 기존 Windows 템플릿 중 하나를 구성하고 설치 프로세스를 자동화하여 해당 VM으로 생성된 설치용 PVC를 복제함으로써 향후 배포를 쉽게 수행할 수 있도록 하는 방법도 알아보았습니다. 더 나아가 인스턴스 유형(InstanceType)을 활용하여 특정 워크로드에 맞게, 가상 머신을 쉽게 선택하고 클라우드와 유사한 환경을 구축하는 방법도 소개했습니다.
