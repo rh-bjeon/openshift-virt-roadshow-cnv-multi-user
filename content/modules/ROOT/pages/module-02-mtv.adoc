@@ -105,11 +105,11 @@ VMware vSphere 및 그 아넹 있는 VM 확인을 마쳤다면 해당 브라우�
 **Migration Toolkit for Virtualization (MTV)**는 OpenShift Virtualization과는 별개의 도구이며, *Virtualization* 관점에서는 접근할 수 없습니다.
 ====
 
-. 왼쪽 메뉴에서 *Virtualization* 클릭 후 드롭다운에서 **Administrator**를 선택합니다.
+. 왼쪽 메뉴에서 **가상화** 클릭 후 드롭다운에서 **관리자**를 선택합니다.
 +
 image::2025_spring/module-02-mtv/05_Admin_Persona.png[link=self, window=blank, width=100%]
 
-. 왼쪽 메뉴에서 *Migration* -> **Providers for virtualization**으로 이동합니다.
+. 왼쪽 메뉴에서 *마이그레이션* -> **Providers for virtualization**으로 이동합니다.
 
 . 상단에서 프로젝트를 **mtv-{user}**로 선택합니다.
 +
@@ -120,7 +120,7 @@ image::2025_spring/module-02-mtv/06_MTV_Providers.png[link=self, window=blank, w
 MTV 2.4 이상 버전은 프로젝트/네임스페이스를 인식하므로 관리자 권한이 필요하지 않습니다. 애플리케이션 팀이나 VM 사용자에게 VM 가져오기 권한을 위임하여 스스로 마이그레이션을 진행할 수 있습니다!
 ====
 
-기본적으로 **OpenShift Virtualization**을 대상 플랫폼으로 나타내느 **host**라는 프로바이더가 있습니다.
+기본적으로 **OpenShift Virtualization**을 대상 플랫폼으로 나타내는 **host**라는 프로바이더가 있습니다.
 
 또한, 실습에서는 이미 **vmware**라는 추가 프로바이더가 구성되어 있으며, 해당 공급자의 엔드포인트 주소는 방금 살펴본 VMware vSphere 클러스터입니다.
 
@@ -145,10 +145,10 @@ image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width
 * database-{user}
 * winweb01-{user}
 * winweb02-{user}
-
-. **Next**를 클릭합니다.
 +
 image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=blank, width=100%]
+
+. **Next**를 클릭합니다.
 
 . 마이그레이션 계획에 대한 세부 정보를 입력합니다. 일부 항목은 자동으로 채워지지만, 아래 값으로 수정하세요.
 
@@ -158,14 +158,14 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 * *Network map*: Pod Networking
 * *Storage map*: ocs-external-storagecluster-ceph-rbd
 +
+image::2025_spring/module-02-mtv/11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
++
 [NOTE]
 ====
 경우에 따라 네트워크 및 스토리지 맵은 검색된 가상 머신이 소스 (원본) 공급자에서 현재 사용 중인 네트워크와 데이터스토어를 자동으로 감지합니다. 그렇지 않은 경우 해당 매핑을 생성하고 OpenShift 측의 위 값과 일치하는지 확인해야 합니다.
 ====
 
 . *Create migration plan* 버튼을 클릭합니다.
-+
-image::2025_spring/module-02-mtv/11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
 
 . 새로운 화면으로 이동하게 되며, 해당 화면에서 마이그레이션 계획이 현재 검증 중(being validated)이며 '준비되지 않음(Not Ready)' 상태임을 확인할 수 있습니다.
 +

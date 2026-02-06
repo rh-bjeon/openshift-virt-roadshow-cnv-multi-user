@@ -240,9 +240,6 @@ image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blan
 +
 image::2025_spring/module-01-intro/33_Pod_Details_Node_Migrated.png[link=self, window=blank, width=100%]
 
-== Summary
-
-In this lab, we did an overview of the Virtualization management environment in OpenShift Virtualization, provisioned a virtual machine from template, and performed some basic virtual machine management tasks: including state management and a live migration between physical hosts. Each of these tasks are common and often necessary tasks to be performed as platform administrators and a great way to familiarize yourself with some basic features available when working with VMs in OpenShift Virtualization.
 == 요약
 
 이 실습에서는 OpenShift Virtualization의 가상화 관리 환경을 개요 수준에서 살펴보고, 템플릿을 사용하여 가상 머신을 프로비저닝하고, 상태 관리 및 물리적 호스트 간의 라이브 마이그레이션과 같은 기본적인 가상 머신 관리 작업을 수행했습니다. 

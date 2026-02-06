@@ -1,28 +1,37 @@
-=  Network Management for Virtual Machines
+=  가상 머신의 네트워크 관리
 
-== Introduction
+== 소개
 
-As mentioned in the previous section, all virtual machines are attached to the OpenShift software-defined network (SDN) by default, which enables access from other workloads on the OpenShift cluster, including other VMs and any OpenShift native applications, and for the virtual machines and the applications they host to be managed in a more modernized workflow.
+이전 섹션에서 언급했듯이, 모든 가상 머신은 기본적으로 OpenShift 소프트웨어 정의 네트워크(SDN)에 연결됩니다. 이를 통해 클러스터 내의 다른 워크로드, 즉 다른 가상 머신이나 OpenShift 네이티브 애플리케이션들과의 통신이 가능하며, 가상 머신과 그 위에서 실행되는 애플리케이션을 보다 현대적인 방식으로 관리할 수 있습니다.
 
 * The SDN provides additional features for abstracting, connecting, and exposing applications in a controlled manner, whether deployed as VMs or Pods in the cluster. These include the *Service* and *Route* features of OpenShift.
 * OpenShift's network policy engine allows the VM user or administrator to create rules which allow or deny network traffic to and from individual VMs or entire projects/namespaces.
+
+* SDN은 VM 또는 Pod로 배포된 애플리케이션을 추상화하고 연결하며, 외부에 노출할 수 있는 기능을 제공합니다. 여기에는 OpenShift의 서비스(Service) 및 라우트(Route) 기능이 포함됩니다.
+* OpenShift의 네트워크 정책 엔진을 사용하면 VM 사용자나 관리자가 특정 VM이나 프로젝트/네임스페이스 전체에 대한 네트워크 트래픽을 허용하거나 차단하는 규칙을 만들 수 있습니다.
 
 However, it is also possible for virtual machines to connect directly to one or more physical networks, such as untagged network or VLANs, when needed. This is in addition to the SDN, which means that, for example, the administrator can connect to the VM from an external IP address and VMs can connect directly using a Layer2 network.
 
 At a high level, this is done by configuring the host networking, such as a Linux bridge. This workshop segment will walk through the next step in that process, creating a network attachment definition to allow VMs to connect to that bridge and, therefore, directly to the physical network. 
 
-NOTE: The OpenShift environment has already been configured with a Linux Bridge on each compute node your virtual machines will connect to, thus allowing for easy connectivity with/from outside network resources.
+
+하지만 필요할 경우, 가상 머신이 태그되지 않은 네트워크(untagged network)나 VLAN과 같은 하나 이상의 물리 네트워크에 직접 연결하는 것도 가능합니다. 이는 SDN과 병행해서도 설정할 수 있으며, 예를 들어 관리자는 외부 IP 주소를 통해 VM에 접속할 수 있고, VM들은 Layer 2 네트워크를 사용해 서로 직접 연결할 수도 있습니다.
+
+간단히 말해, 이는 호스트 네트워크(예: Linux bridge)를 설정함으로써 이를 구성합니다. 이 실습에서는 그 다음 단계로, 가상 머신이 해당 브리지에 연결되어 물리 네트워크에 직접 접근할 수 있도록 하는 네트워크 연결 정의(Network Attachment Definition)를 생성하는 방법을 단계별로 안내합니다.
+
+NOTE: 현재 OpenShift 환경에는 가상 머신이 연결될 수 있도록 각 컴퓨트 노드에 Linux 브리지가 이미 구성되어 있으므로, 외부 네트워크 리소스와의 연결을 쉽게 할 수 있습니다.
 
 [[review]]
-== Review environment
+== 환경 검토
 
-The *Kubernetes NMState Operator* provides a Kubernetes API for performing state-driven network configuration across the OpenShift Container Platform cluster's nodes with NMState. The Kubernetes NMState Operator provides users with functionality to configure various network interface types, DNS, and routing on cluster nodes. Additionally, the daemons on the cluster nodes periodically report on the state of each node's network interfaces to the API server.
+**Kubernetes NMState Operator**는 NMState를 사용하여 OpenShift Container Platform 클러스터 노드 전체에 걸쳐 상태 기반 네트워크 구성을 수행할 수 있는 Kubernetes API를 제공합니다. 사용자는 이 오퍼레이터를 통해 클러스터 노드에서 다양한 네트워크 인터페이스 유형, DNS 및 라우팅을 구성할 수 있으며, 클러스터 노드의 데몬은 각 노드의 네트워크 인터페이스 상태를 주기적으로 API 서버에 보고합니다.
 
-. In the left-side menu, click on *Networking* and then *NodeNetworkState* to review the current configuration.
+. 왼쪽 메뉴에서 **네트워킹**을 클릭한 다음 **Node network configuration**을 클릭하여 현재 구성을 확인하세요.
 +
 image::2025_spring/module-09-networking/01_NodeNetworkState_List.png[link=self, window=blank, width=100%]
 
 . As stated, you will notice that the worker nodes have a linux bridge already configured to be used for this module. Expand one of the workers and click on the bridge *br-flat* to gather more information about it.
+언급된 것처럼, 워커 노드에는 이 모듈에서 사용할 수 있도록 이미 Linux bridge가 구성되어 있습니다. 워커 중 하나를 확장한 후 br-flat 브리지를 클릭하여 자세한 정보를 확인합니다.
 +
 image::2025_spring/module-09-networking/02_NodeNetworkState_Info.png[link=self, window=blank, width=100%]
 
