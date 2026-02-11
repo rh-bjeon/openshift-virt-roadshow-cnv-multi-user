@@ -128,7 +128,6 @@ NOTE: 기본적으로 Windows2019 부팅 소스가 제공되지 않기 때문에
 NOTE: 실제 운영 환경에서는 부팅 소스를 생성하기 위해 Windows 가상 머신을 미리 생성하여, 해당 볼륨을 Windows 부팅 소스로 활용 가능합니다.
 +
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
-+
 
 . 다음 단계를 수행하세요:
 * 이름을 *win-sysprep* 으로 지정합니다.
