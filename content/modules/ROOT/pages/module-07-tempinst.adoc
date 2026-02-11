@@ -126,7 +126,7 @@ image::2025_spring/module-07-tempinst/16_Windows_2k19_Tile.png[link=self, window
 NOTE: 기본적으로 Windows2019 부팅 소스가 제공되지 않기 때문에 이 가상 머신을 빠르게 생성하는 옵션이 없다는 점에 유의하십시오. 필요에 맞게 가상 머신을 직접 생성해야 합니다.
 
 NOTE: 실제 운영 환경에서는 부팅 소스를 생성하기 위해 Windows 가상 머신을 미리 생성하여, 해당 볼륨을 Windows 부팅 소스로 활용 가능합니다.
-+
+
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 
 . 다음 단계를 수행하세요:
