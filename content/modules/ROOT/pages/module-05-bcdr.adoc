@@ -117,7 +117,7 @@ image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, widt
 +
 image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank, width=100%]
 
-. 가상 머신이 인벤토리에서 사라집니다.
+. *fedora02* 가상 머신이 인벤토리에서 사라집니다.
 +
 image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, width=100%]
 
