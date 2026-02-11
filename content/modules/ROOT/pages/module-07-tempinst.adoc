@@ -51,15 +51,11 @@ image::2025_spring/module-07-tempinst/03_Create_Custom_Template.png[link=self, w
 +
 image::2025_spring/module-07-tempinst/04_Clone_Template_Options.png[link=self, window=blank, width=100%]
 
-. 이렇게 하면 템플릿의 `세부 정보` 페이지로 이동하며, 몇 가지 옵션을 사용자 지정할 수 있습니다. 페이지 하단에서 CPU와 메모리 항목을 찾아 연필 아이콘을 클릭하여 편집하세요.
+. 이렇게 하면 템플릿의 `세부 정보` 페이지로 이동하며, 몇 가지 옵션을 사용자 지정할 수 있습니다. 내용을 확인합니다.
 +
 image::2025_spring/module-07-tempinst/05_Clone_Details.png[link=self, window=blank, width=100%]
 
-. [수정 필요!!] CPU와 메모리 용량을 편집할 수 있는 새 창이 나타납니다. 사용자 지정 템플릿의 경우 CPU 값을 2로, 메모리 값을 4GiB로 설정한 다음 `저장` 버튼을 클릭하세요.
-+
-image::2025_spring/module-07-tempinst/06_Edit_CPU_Mem.png[link=self, window=blank, width=100%]
-
-. 다음으로 상단의 `Scripts` 탭을 클릭하고 *Cloud-init* 섹션에서 `편집` 버튼을 클릭합니다.
+. 다음으로 상단의 `스크립트` 탭을 클릭하고 *Cloud-init* 섹션에서 `편집` 버튼을 클릭합니다.
 +
 image::2025_spring/module-07-tempinst/09_Scripts_CloudInit.png[link=self, window=blank, width=100%]
 
@@ -87,7 +83,7 @@ image::2025_spring/module-07-tempinst/10_Cloud_Init_Script.png[link=self, window
 +
 image::2025_spring/module-07-tempinst/11_User_Templates.png[link=self, window=blank, width=100%]
 
-. 타일을 클릭하면 VM 시작 화면이 나타납니다. *가상 머신 빠른 생성* 버튼을 클릭하세요.
+. 타일을 클릭하면 VM 시작 화면이 나타납니다. `VirtualMachine 빠르게 생성` 버튼을 클릭하세요.
 +
 image::2025_spring/module-07-tempinst/12_Quick_Create_Template.png[link=self, window=blank, width=100%]
 
@@ -133,6 +129,7 @@ NOTE: 실제 운영 환경에서는 부팅 소스를 생성하기 위해 Windows
 +
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
+
 . 다음 단계를 수행하세요:
 * 이름을 *win-sysprep* 으로 지정합니다.
 * *CD에서 부팅* 체크박스에 체크합니다.
