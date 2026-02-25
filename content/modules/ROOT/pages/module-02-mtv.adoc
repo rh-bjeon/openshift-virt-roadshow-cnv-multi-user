@@ -205,7 +205,7 @@ image::2025_spring/module-02-mtv/17_VM_Migration_Stages.png[link=self, window=bl
 
 아래 섹션을 살펴보시고 인터랙티브 데모 비디오도 시청해 보시기 바랍니다.
 
-=== 자동회된 구성 후크 (Config Hooks)
+=== 자동화된 구성 후크 (Config Hooks)
 
 자동화된 구성 후크는 MTV에 내장된 매우 강력하고 유용한 기능입니다.
 
