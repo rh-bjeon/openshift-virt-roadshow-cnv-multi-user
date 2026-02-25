@@ -135,7 +135,7 @@ image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, wind
 * 드롭다운 메뉴에서 *URL (PVC 생성)* 을 선택합니다.
 * *이미지 URL* 을 지정합니다: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
 * CD 디스크 크기를 *5GiB* 로 줄입니다.
-* *디스크 소스* 는 *빈 디스크* 로 유지하고 크기는 기본값인 *60GiB* 로 설정합니다.
+* *디스크 소스* 는 *비어있음* 으로 유지하고 크기는 기본값인 *60GiB* 로 설정합니다.
 * *Windows 드라이버 디스크 마운트* 체크박스가 체크되어 있는지 확인합니다. **VirtIO용 드라이버를 제공하는 Windows 시스템을 설치하려면 이 작업이 필요합니다.**
 +
 

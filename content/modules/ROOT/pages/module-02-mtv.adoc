@@ -179,7 +179,7 @@ image::2025_spring/module-02-mtv/13_Migration_Plan_Ready.png[link=self, window=b
 +
 image::2025_spring/module-02-mtv/14_Confirm_Migrate_Start.png[link=self, window=blank, width=100%]
 
-. 계획 상태가 *'Running'* 으로 바뀌고 , *'Status'* 필드 아래에 회전하는 아이콘이 나타나며 마이그레이션 진행 상황이 백분율로 표시됩니다.
+. 계획 상태가 *'Running'* 으로 바뀌고 , *'Status'* 필드 아래에 회전하는 아이콘이 나타나며 마이그레이션 전체 진행 상황이 표시됩니다.
 +
 image::2025_spring/module-02-mtv/15_VMs_Migrating.png[link=self, window=blank, width=100%]
 

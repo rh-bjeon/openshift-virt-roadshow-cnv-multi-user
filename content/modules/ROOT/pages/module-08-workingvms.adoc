@@ -28,7 +28,7 @@ IMPORTANT:
 
 왼쪽 열에서 **VirtualMachines**을 클릭하고 가져온 세 개의 가상 머신이 실행 중이 아니라면 **시작** 하세요. 오른쪽 트리 보기에서 *상태* 열을 기준으로 정렬하면 실행 중인지 쉽게 확인할 수 있습니다.
 +
-이미지::2025_spring/module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, width=100%]
+image::2025_spring/module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, width=100%]
 +
 NOTE: *기존 가상 머신 마이그레이션* 모듈을 완료했다면 *vmexamples-{user}* 프로젝트를, 완료하지 않았다면 *vmimported-{user}* 프로젝트를 선택해야 합니다. 올바른 프로젝트를 선택했는지 확인하세요.
 
@@ -97,7 +97,7 @@ image::2025_spring/module-08-workingvms/17_Route_Navigation.png[link=self, windo
 
 . 아래 정보를 사용하여 양식을 작성하고, 아래로 스크롤하여 완료되면 '생성'을 클릭하세요.
 +
-.. *이*: *route-webapp*
+.. *이름*: *route-webapp*
 .. *서비스*: *webapp*
 .. *대상 포트*: *80 -> 80 (TCP)*
 .. *보안*: *안전한 경로(체크)*

@@ -21,15 +21,15 @@
 
 == 가상화 관점으로 전환
 
-. 처음 로그인하면 *Developer* 관점으로 시작되며 소개 메시지가 표시됩니다. 창을 닫으려면 *Skip tour* 버튼을 클릭하세요.
+. 처음 로그인하면 *관리자* 관점으로 시작되며 소개 메시지가 표시됩니다. 창을 닫으려면 *'기능 둘러보기 건너 뛰기'* 버튼을 클릭하세요.
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
-. 이제 왼쪽 상단의 **Developer**를 클릭하고 **Virtualization** 관점으로 전환합니다.
+. 이제 왼쪽 상단의 **관리자**를 클릭하고 **Virtualization** 관점으로 전환합니다.
 +
 image::2025_spring/module-01-intro/01_Virt_Perspective.png[link=self, window=blank, width=100%]
 
-. OpenShift Virtualization에 오신 것을 환영하는 소개 메시지가 표시됩니다. *Do not show this again* 체크 박스를 클릭하면 창이 사라집니다.
+. OpenShift Virtualization에 오신 것을 환영하는 소개 메시지가 표시됩니다. *이를 다시 표시하지 않음* 체크 박스를 클릭하면 창이 사라집니다.
 +
 image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, width=100%]
 
@@ -54,11 +54,11 @@ image::2025_spring/module-01-intro/05_Left_Menu.png[link=self, window=blank, wid
 
 . 가운데 열은 프로젝트 뷰입니다. OpenShift의 다른 객체들과 마찬가지로, 프로젝트(Kubernetes 네임스페이스의 추상화)는 사용자가 리소스를 사용하고 관리하는 데 사용할 수 있는 권한 등을 정의하는 기준이 됩니다. 기본적으로 여기에는 기존 VM이 있는 프로젝트만 표시되도록 필터가 설정되어 있습니다. 현재 우리가 볼 수 있는 프로젝트는 *vmimported-{user}* 하나뿐인데, 이는 우리가 접근 권한이 있는 가상 머신이 있는 유일한 프로젝트이기 때문입니다. 
 
-. 개요 열에는 기본적으로 기본적으로 **All projects**가 선택되어 있어 클러스터의 모든 사용자 VM이 보입니다. 열을 기준으로 정렬하여 VM을 더 쉽게 찾거나, 표시할 열을 조정할 수도 있습니다. 가운데 열에서 특정 프로젝트 또는 가상 머신을 선택하면 이 보기 방식이 변경됩니다. 
+. 개요 열에는 **mtv-{user}**가 선택되어 있어 아무런 VM도 보이지 않습니다. 기본적으로 (가상 머신이 있든 없든) 유저에게 권한이 있는 프로젝트 중 가장 위쪽에 있는 프로젝트가 자동으로 선택되기 때문입니다. 
 + 
 image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%] 
 
-. 가운데 열에서 *vmimported-{user}* 프로젝트를 클릭하면 현재 이 사용자 계정에서 사용 가능한 가상 머신들을 볼 수 있습니다.
+. 가운데 열에서 *vmimported-{user}* 프로젝트를 클릭하면 현재 이 사용자 계정에서 사용 가능한 가상 머신들을 볼 수 있습니다. 열을 기준으로 정렬하여 VM을 더 쉽게 찾거나, 표시할 열을 조정할 수도 있습니다. 가운데 열에서 특정 프로젝트 또는 가상 머신을 선택하면 이 보기 방식이 변경됩니다. 
 + 
 image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%] 
 + 
@@ -73,11 +73,11 @@ image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, w
 
 . VM을 만들기 전에 먼저 새 프로젝트를 생성해야 합니다. VM은 특정 프로젝트(또는 네임스페이스)에 배포되며, 기본적으로 해당 네임스페이스에 권한이 없는 사용자는 VM에 접근하거나 관리할 수 없습니다. 관리자는 모든 프로젝트에 접근할 수 있으므로 모든 VM을 볼 수 있지만, 일반 사용자는 필요에 따라 프로젝트에 대한 접근 권한을 부여받아야 합니다.
 +
-. 가운데 트리 뷰 상단 오른쪽의 **Create Project**를 클릭합니다. 
+. 가운데 트리 뷰 상단 오른쪽의 **프로젝트 만들기**를 클릭합니다. 
 +
 image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]
 
-. *Name* 필드에 **vmexamples-{user}**를 입력하고 **Create**를 클릭합니다.
+. *이름* 필드에 **vmexamples-{user}**를 입력하고 **만들기**를 클릭합니다.
 +
 image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank, width=100%]
 +
@@ -86,7 +86,7 @@ NOTE: 오른쪽의 VM 개요 열은 즉시 새 프로젝트 뷰로 전환되지�
 [[create_vm]]
 == 리눅스 가상 머신 생성
 
-. 오른쪽 VM 개요 열에서 *Create VirtualMachine* 버튼을 클릭하고 드롭다운에서 **From template**을 선택합니다.
+. 오른쪽 VM 개요 열에서 *VirtualMachine 생성* 버튼을 클릭하고 드롭다운에서 **템플릿에서**를 선택합니다.
 +
 NOTE: VM은 InstanceType 마법사를 통해 생성할 수도 있고 YAML을 작성하여 생성할 수도 있지만, 이번 실습에서는 기존 템플릿을 사용하여 VM을 생성해보겠습니다.
 +
@@ -94,7 +94,7 @@ image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=bla
 
 . *Catalog* 화면으로 이동하게 되며, 미리 정의된 VM 템플릿이 타일 형태로 표시됩니다.
 +
-. 사용 가능한 템플릿 목록을 확인해 보면 일부 템플릿에 **‘Source available’**을 의미하는 파란색 배지가 표시되어 있습니다. 이 배지가 있는 템플릿은 자동으로 다운로드되어 저장된 템플릿 소스 디스크(부트 소스)를 사용합니다.
+. 사용 가능한 템플릿 목록을 확인해 보면 일부 템플릿에 **'소스 사용 가능'**을 의미하는 파란색 배지가 표시되어 있습니다. 이 배지가 있는 템플릿은 자동으로 다운로드되어 저장된 템플릿 소스 디스크(부트 소스)를 사용합니다.
 +
 자체 환경에서는 필요에 따라 이 부트 소스의 기본 제공을 여부를 변경하거나 소스 디스크를 제거하고, 조직 요구에 맞는 커스텀 디스크를 생성해 사용하는 방식으로 대체할 수도 있습니다.
 +
@@ -104,7 +104,7 @@ image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=
 +
 image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
 
-. 이름을 **fedora01**로 변경하고 **Quick create VirtualMachine**을 클릭합니다.
+. 이름을 **fedora01**로 변경하고 **VirtualMachine 빠르게 생성**을 클릭합니다.
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
@@ -116,22 +116,22 @@ image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window
 +
 image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
 
-. VM이 실행되면 오른쪽 열의 **Overview**를 자세히 살펴볼 수 있습니다.
+. VM이 실행되면 오른쪽 열의 **개요**를 자세히 살펴볼 수 있습니다.
 +
-* *Details*: VM의 이름, 상태, 생성 시간, OS, 리소스, 사용된 템플릿 등의 정보를 보여줍니다. 간략한 VNC 터미널과 전체 화면 웹 콘솔을 실행하는 기능도 포함되어 있습니다.
-* *General*: 네임스페이스(프로젝트), 인스턴스 이름, 실행 중인 Kubernetes Pod 등의 OpenShift 관련 정보를 보여줍니다.
-* *Snapshots*: VM 스냅샷 정보를 제공하며 스냅샷 생성 버튼도 있습니다.
-* *Network*: 소프트웨어 정의 네트워크(SDN)에서 VM의 IP 주소와 내부 호스트 이름을 보여줍니다. 고급 네트워크가 정의되어 있지 않은 경우 VM은 기본적으로 pod 네트워크에 연결됩니다. 고급 네트워크 구성에 대한 내용은 이후에 다룹니다.
-* *Utilization*: CPU, 메모리, 스토리지, 네트워크 처리량 등 이 VM에서 현재 사용 중인 리소스의 현황을 보여줍니다.
+* *세부 정보*: VM의 이름, 상태, 생성 시간, OS, 리소스, 사용된 템플릿 등의 정보를 보여줍니다. 간략한 VNC 터미널과 전체 화면 웹 콘솔을 실행하는 기능도 포함되어 있습니다.
+* *일반*: 네임스페이스(프로젝트), 인스턴스 이름, 실행 중인 Kubernetes Pod 등의 OpenShift 관련 정보를 보여줍니다.
+* *스냅샷*: VM 스냅샷 정보를 제공하며 스냅샷 생성 버튼도 있습니다.
+* *네트워크*: 소프트웨어 정의 네트워크(SDN)에서 VM의 IP 주소와 내부 호스트 이름을 보여줍니다. 고급 네트워크가 정의되어 있지 않은 경우 VM은 기본적으로 pod 네트워크에 연결됩니다. 고급 네트워크 구성에 대한 내용은 이후에 다룹니다.
+* *사용*: CPU, 메모리, 스토리지, 네트워크 처리량 등 이 VM에서 현재 사용 중인 리소스의 현황을 보여줍니다.
 +
 image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
-. VM 세부 정보를 모두 확인했다면 *Events* 탭을 클릭하여 방금 완료된 프로비저닝 과정에 대한 자세한 내용을 확인해보세요. VM 생성에 문제가 있는 경우에도 이 탭에 표시됩니다. 생성 중에 다음과 같은 이벤트가 발생한 것을 확인할 수 있습니다.
+. VM 세부 정보를 모두 확인했다면 *이벤트* 탭을 클릭하여 방금 완료된 프로비저닝 과정에 대한 자세한 내용을 확인해보세요. VM 생성에 문제가 있는 경우에도 이 탭에 표시됩니다. 생성 중에 다음과 같은 이벤트가 발생한 것을 확인할 수 있습니다.
 +
 image::2025_spring/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
 +
-* _DataVolume_이 생성되었습니다. _DataVolume_은 VM 디스크 생성 시 클론 또는 가져오기 과정을 OpenShift 네이티브 스토리지 상에서 추상화합니다.
-* 새로운 _VM instance_ Fedora01이 시작되었습니다.
+* __DataVolume__이 생성되었습니다. __DataVolume__은 VM 디스크 생성 시 클론 또는 가져오기 과정을 OpenShift 네이티브 스토리지 상에서 추상화합니다.
+* 새로운 __VM instance__ Fedora01이 시작되었습니다.
 
 
 [[admin_vms]]
@@ -139,7 +139,7 @@ image::2025_spring/module-01-intro/18_Fedora_Events.png[link=self, window=blank,
 
 가상 머신을 관리하고 사용하는 것은 단순히 생성하고 구성하는 것 이상입니다. 플랫폼 관리자는 VM 상태를 제어하고 라이브 마이그레이션을 수행하여 리소스 균형 조정, 유지보수 작업, 노드 재구성 등을 해야 합니다.
 
-. *Configuration* 탭을 클릭하면 VM 리소스에 대한 상세 정보 확인 및 수정을 할 수 있습니다.
+. *설정* 탭을 클릭하면 VM 리소스에 대한 상세 정보 확인 및 수정을 할 수 있습니다.
 +
 image::2025_spring/module-01-intro/19_VM_Configuration.png[link=self, window=blank, width=100%]
 +
@@ -148,97 +148,91 @@ image::2025_spring/module-01-intro/19_VM_Configuration.png[link=self, window=bla
 image::2025_spring/module-01-intro/20_Configuration_Tab.png[link=self, window=blank, width=100%]
 +
 
-* *Details*: VM의 물리적 속성을 하나의 패널에서 보여줍니다. CPU 또는 메모리 수정, 호스트명 변경, 패스스루 장치 연결, 부팅 순서 설정 등이 가능합니다.
-* *Storage*: 시스템에 연결된 디스크 목록이 표시되며, 새로운 디스크 추가가 가능합니다. Guest OS에 에이전트가 구성된 경우 파일시스템 및 사용량도 표시됩니다. _ConfigMaps_, _Secrets_, _Service Accounts_를 추가 디스크로 연결할 수 있습니다. 이는 가상 머신에서 실행되는 애플리케이션에 config 관련 데이터를 전달할 때 유용합니다.
-* *Network*: VM에 구성된 현재 네트워크 인터페이스가 표시되며 새 인터페이스를 추가할 수 있습니다.
-* *Scheduling*: VM이 실행될 위치, 제거 전략 등을 설정할 수 있는 고급 구성 옵션입니다. (안티) 선호도 규칙(affinity rules), 노드 선택기(node selectors) 및 허용 범위(tolerations) 등을 설정합니다.
+* *세부 정보*: VM의 물리적 속성을 하나의 패널에서 보여줍니다. CPU 또는 메모리 수정, 호스트명 변경, 패스스루 장치 연결, 부팅 순서 설정 등이 가능합니다.
+* *스토리지*: 시스템에 연결된 디스크 목록이 표시되며, 새로운 디스크 추가가 가능합니다. Guest OS에 에이전트가 구성된 경우 파일시스템 및 사용량도 표시됩니다. __ConfigMaps__, __Secrets__, __Service Accounts__를 추가 디스크로 연결할 수 있습니다. 이는 가상 머신에서 실행되는 애플리케이션에 config 관련 데이터를 전달할 때 유용합니다.
+* *네트워크*: VM에 구성된 현재 네트워크 인터페이스가 표시되며 새 인터페이스를 추가할 수 있습니다.
+* *스케줄링*: VM이 실행될 위치, 제거 전략 등을 설정할 수 있는 고급 구성 옵션입니다. (안티) 선호도 규칙(affinity rules), 노드 선택기(node selectors) 및 허용 범위(tolerations) 등을 설정합니다.
 * *SSH*: 이 탭에서는 구성되어 로드 밸런서에 SSH 서비스를 생성하거나(또는 해당 기능이 활성화되어 있는 경우 공개 SSH 키를 주입하여) 머신에 대한 원격 접근을 설정할 수 있습니다.
-* *Initial run*: 리눅스의 _cloud-init_ 또는 윈도우의 _sys-prep_ 구성 설정 탭입니다. 초기 부팅 시 실행할 명령(SSH 키 삽입, 앱 설치, 네트워크 설정 등)을 설정할 수 있습니다.
-* *Metadata*: 현재 가상 머신에 적용된 Label 및 Annotation을 보여줍니다. 이러한 값을 수정하면 특정 목적에 맞게 머신에 태그를 지정하거나, 머신을 고유하게 식별하여 자동화된 워크플로를 활성화하는 데 도움이 될 수 있습니다.
+* *초기 실행*: 리눅스의 __cloud-init__ 또는 윈도우의 __sys-prep__ 구성 설정 탭입니다. 초기 부팅 시 실행할 명령(SSH 키 삽입, 앱 설치, 네트워크 설정 등)을 설정할 수 있습니다.
+* *메타데이터*: 현재 가상 머신에 적용된 Label 및 Annotation을 보여줍니다. 이러한 값을 수정하면 특정 목적에 맞게 머신에 태그를 지정하거나, 머신을 고유하게 식별하여 자동화된 워크플로를 활성화하는 데 도움이 될 수 있습니다.
 
 . 각 항목을 클릭하여 원하는 대로 살펴보실 수 있지만, 소개 차원에서 저장 장치와 네트워킹에 초점을 맞춰 보겠습니다.
 
-. **Storage** 탭을 클릭하여 해당 가상 머신에 연결된 디스크 목록을 확인합니다.
+. **스토리지** 탭을 클릭하여 해당 가상 머신에 연결된 디스크 목록을 확인합니다.
 +
 image::2025_spring/module-01-intro/21_Storage_Tab.png[link=self, window=blank, width=100%]
 +
 이 환경에서 디스크에 사용되는 스토리지의 소스와 유형을 정의하는 기본 StorageClass는 **ocs-external-storagecluster-ceph-rbd**입니다. 이 스토리지는 OpenShift Data Foundation(ODF)이 제공하는 기본 유형으로, 가상 머신을 실행하는 데 사용됩니다. 각 스토리지 공급자는 VM 디스크를 지원하는 스토리지의 특성을 정의하는 다양한 스토리지 클래스를 가지고 있습니다.
 
-. **Network** 하위 탭을 클릭하여 해당 가상 머신에 연결된 네트워크 인터페이스를 확인합니다.
+. **네트워크** 하위 탭을 클릭하여 해당 가상 머신에 연결된 네트워크 인터페이스를 확인합니다.
 +
 image::2025_spring/module-01-intro/22_Network_Tab.png[link=self, window=blank, width=100%]
 +
-가상 머신이 생성되면, 기본적으로 Pod Networking에 masquerade 유형의 네트워크 인터페이스가 하나 생성됩니다. 이 인터페이스는 VM을 SDN에 연결하고, VM에서 OpenShift 클러스터 외부로의 트래픽 출력을 제공합니다. 클러스터 내의 다른 VM 및 파드(Pod)들도 이 인터페이스를 통해 해당 가상 머신에 접근할 수 있습니다.
+가상 머신이 생성되면, 기본적으로 Pod 네트워킹에 masquerade 유형의 네트워크 인터페이스가 하나 생성됩니다. 이 인터페이스는 VM을 SDN에 연결하고, VM에서 OpenShift 클러스터 외부로의 트래픽 출력을 제공합니다. 클러스터 내의 다른 VM 및 파드(Pod)들도 이 인터페이스를 통해 해당 가상 머신에 접근할 수 있습니다.
 +
-또한, SDN에 연결된 VM은 Route 또 LoadBalancer 유형의 Servic 를 사용하여 외부에서 액세스할 수 있으며, Network Attachment Definition 또는 사용자 정의 네트워크(UDN)를 통해 VLAN 또는 외부 네트워크에 직접 연결할 수도 있습니다. 이러한 옵션은 나중에 자세히 살펴보겠습니다.
+또한, SDN에 연결된 VM은 Route 또 LoadBalancer 유형의 Service를 사용하여 외부에서 액세스할 수 있으며, Network Attachment Definition 또는 사용자 정의 네트워크(UDN)를 통해 VLAN 또는 외부 네트워크에 직접 연결할 수도 있습니다. 이러한 옵션은 나중에 자세히 살펴보겠습니다.
 
 [[vm_state]]
 == 가상 머신 상태 제어
 
 Virtualization 환경을 관리할 수 있는 권한이 부여된 사용자는 웹 콘솔을 통해 가상 머신을 정지(Stop), 시작(Start), 재시작(Restart), 일시 중지(Pause), 일시 중지 해제(Unpause) 할 수 있습니다.
 
-. **Overview** 탭을 클릭하여 요약 화면으로 돌아갑니다.
+. **개요** 탭을 클릭하여 요약 화면으로 돌아갑니다.
 
-. 오른쪽 상단에는 상태 제어를 위한 단축 버튼들(stop, restart, pause, start)과 **Actions**라는 드롭다운 메뉴가 표시됩니다.
+. 오른쪽 상단에는 상태 제어를 위한 단축 버튼들(중지, 재시작, 일시 중지, 시작)과 **동작**이라는 드롭다운 메뉴가 표시됩니다.
 +
 image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=blank, width=100%]
 +
-* *Stop*: 가상 머신을 정상 종료(Graceful Shutdown)합니다.
-* *Restart*: 가상 머신 운영체제에 재부팅 신호를 보냅니다. 이를 위해서는 게스트 통합(Guest integrations)이 필요합니다.
-* *Pause*: 가상 머신의 프로세스가 CPU 리소스 및 I/O에 더 이상 접근할 수 없도록 정지되지만, 하이퍼바이저 수준에서 VM이 사용하는 메모리는 할당된 상태로 유지됩니다.
-* *Start*: 정지된 가상 머신을 시작합니다. 가상 머신이 이미 실행 중이면 비활성화(회색)됩니다.
+* *중지*: 가상 머신을 정상 종료(Graceful Shutdown)합니다.
+* *재시작*: 가상 머신 운영체제에 재부팅 신호를 보냅니다. 이를 위해서는 게스트 통합(Guest integrations)이 필요합니다.
+* *일시 중지*: 가상 머신의 프로세스가 CPU 리소스 및 I/O에 더 이상 접근할 수 없도록 정지되지만, 하이퍼바이저 수준에서 VM이 사용하는 메모리는 할당된 상태로 유지됩니다.
+* *시작*: 정지된 가상 머신을 시작합니다. 가상 머신이 이미 실행 중이면 비활성화(회색)됩니다.
 
-. 단축 버튼 외에도, Actions 메뉴를 클릭하여 더 많은 제어 옵션을 확인할 수 있습니다.
+. 단축 버튼 외에도, '동작' 메뉴를 클릭하여 더 많은 제어 옵션을 확인할 수 있습니다.
 +
 image::2025_spring/module-01-intro/24_VM_Actions_Menu.png[link=self, window=blank, width=100%]
 
-. **Stop** 버튼을 눌러 가상 머신을 정지시키고, 상태가 **Stopped**가 될 때까지 기다립니다.
+. **중지** 버튼을 눌러 가상 머신을 정지시키고, 상태가 **Stopped**가 될 때까지 기다립니다.
 +
 image::2025_spring/module-01-intro/25_VM_Stopped.png[link=self, window=blank, width=100%]
 
-. **Actions**를 클릭하면 **Start** 옵션이 나타나고, **Restart** 및 **Pause** 옵션은 회색(비활성화)으로 표시됩니다.
+. **동작**을 클릭하면 **시작** 옵션이 나타나고, **재시작** 및 **일시 중지** 옵션은 회색(비활성화)으로 표시됩니다.
 +
 image::2025_spring/module-01-intro/26_VM_Actions_List_Stopped.png[link=self, window=blank, width=100%]
 
-. **Start**를 클릭하고, 상태가 **Running**으로 바뀔 때까지 기다립니다.
+. **시작**을 클릭하고, 상태가 **Running**으로 바뀔 때까지 기다립니다.
 
-. **Actions** 메뉴 또는 단축 버튼을 사용하여 **Pause** 옵션을 클릭합니다. 가상 머신 상태가 **Paused**로 변경됩니다.
+. **동작** 메뉴 또는 단축 버튼을 사용하여 **일시 중지** 옵션을 클릭합니다. 가상 머신 상태가 **Paused**로 변경됩니다.
 +
 image::2025_spring/module-01-intro/27_VM_Actions_Paused.png[link=self, window=blank, width=100%]
 
-. **Actions** 메뉴에서 **Unpause**를 선택하거나 단축 버튼을 이용하여 가상 머신의 일시 중지를 해제합니다.
+. **동작** 메뉴에서 **일시중지 해제**를 선택하거나 단축 버튼을 이용하여 가상 머신의 일시 중지를 해제합니다.
 
 [[live_migrate]]
 == 가상 머신 라이브 마이그레이션
 
-이번 섹션에서는 가상 머신을 종료하지 않고 OpenShift의 한 노드에서 다른 노드로 마이그레이션하는 라이브 마이그레이션을 수행합니다. 라이브 마이그레이션을 위해서는 VM 디스크를 소스 노드와 대상 노드에 동시에 마운트할 수 있도록 **RWX** (ReadWriteMany) 스토리지가 필요합니다.
+이번 섹션에서는 가상 머신을 종료하지 않고 OpenShift의 한 노드에서 다른 노드로 마이그레이션하는 라이브 마이그레이션을 수행합니다. 라이브 마이그레이션을 위해서는 VM 디스크를 소스 노드와 대상 노드에 동시에 마운트할 수 있도록 **RWX**(ReadWriteMany) 스토리지가 필요합니다.
 OpenShift Virtualization은 기존 가상화 솔루션과 달리, 여러 VM에 대한 여러 VM 디스크를 저장하는 단일 데이터스토어를 모든 노드에 마운트하는 방식을 사용하지 않습니다. 대신, 각 VM 디스크는 필요할 때만 특정 노드에 마운트되는 개별 볼륨에 저장됩니다.
 
-. 가상 머신이 실행 중인 물리적 노드를 확인하려면, **Overview** 페이지의 **General** 섹션에서 _virt-launcher-fedora01-uuid_ 이름의 **Pod**를 클릭합니다.
+. 가상 머신이 실행 중인 물리적 노드의 이름을 확인합니다. 아래 스크린샷에서는 _worker-cluster-f785k-4_ 에서 실행되고 있습니다.
 +
-image::2025_spring/module-01-intro/28_Pod_Name.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/28_Node_Name.png[link=self, window=blank, width=100%]
 
-. 그러면 해당 Pod의 상세 페이지가 나타납니다. 'Node'라는 제목의 섹션에서 파드가 실행 중인 워커 노드 이름을 확인할 수 있습니다. 아래 스크린샷에서는 _worker-cluster-ttgmt-3_ 에서 실행되고 있습니다.
-+
-image::2025_spring/module-01-intro/29_Pod_Details_Node.png[link=self, window=blank, width=100%]
-
-. 브라우저의 뒤로가기 버튼을 눌러 **Overview** 페이지로 돌아갑니다.
-
-. *Actions* 메뉴를 사용하여 *Migration* -> *Compute* 옵션을 선택합니다.
+. *동작* 메뉴를 사용하여 *Migration* -> *컴퓨팅* 옵션을 선택합니다. 
 +
 image::2025_spring/module-01-intro/30_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
+
+. 그러면 어느 노드로 VM을 라이브 마이그레이션 할지 선택하는 팝업이 나타납니다. 자동으로 노드를 선택하도록 선택할 수도 있으며, 아래의 스크린샷처럼 특정 노드로 VM을 이동할 수도 있습니다. 어떠한 옵션이든지 선택이 완료된 후에 *VirtualMachine 마이그레이션* 버튼을 눌러서 라이브 마이그레이션을 시작합니다.
++
+image::2025_spring/module-01-intro/30_Select_Node.png[link=self, window=blank, width=100%]
 
 . 몇 초 후, VM 상태가 **Migrating**으로 변경되고 진행 상황을 확인할 수 있습니다.
 +
 image::2025_spring/module-01-intro/31_VM_Migrating.png[link=self, window=blank, width=100%]
 
-. 마이그레이션이 완료되면 VM 상태가 다시 **Running**으로 바뀌지만, 이제는 다른 노드에서 실행됩니다. virt-launcher-fedora01-uuid 파드 이름을 클릭하여 이를 확인합니다.
+. 마이그레이션이 완료되면 VM 상태가 다시 **Running**으로 바뀌지만, 이제는 다른 노드에서 실행됩니다. 이제 VM이 새로운 노드, 즉 _worker-cluster-f785k-2_ 에서 실행되고 있는 것을 확인할 수 있습니다.
 +
 image::2025_spring/module-01-intro/32_Migrated_Status.png[link=self, window=blank, width=100%]
-
-. 이제 VM이 새로운 노드, 즉 _worker-cluster-ttgmt-2_ 에서 실행되고 있는 것을 확인할 수 있습니다. 또한, 라이브 마이그레이션 과정에서 새로운 파드가 생성되어 VM 인스턴스를 비중단 방식으로 이전한 것도 확인할 수 있습니다.
-+
-image::2025_spring/module-01-intro/33_Pod_Details_Node_Migrated.png[link=self, window=blank, width=100%]
 
 == 요약
 
