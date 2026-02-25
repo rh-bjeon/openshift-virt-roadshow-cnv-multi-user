@@ -32,18 +32,25 @@ image::2025_spring/module-08-workingvms/11_Imported_VMs_List.png[link=self, wind
 
 NOTE: *기존 가상 머신 마이그레이션* 모듈을 완료했다면 *vmexamples-{user}* 프로젝트를, 완료하지 않았다면 *vmimported-{user}* 프로젝트를 선택해야 합니다. 올바른 프로젝트를 선택했는지 확인하세요.
 
-. *winweb01-{user}* VM을 선택하고 *YAML* 탭으로 이동합니다.
-. *spec:* 섹션을 찾고 *template.metadata* 아래의 *labels* 섹션에 다음 내용을 추가하세요.
+. *winweb01-{user}* VM을 선택하고 `설정` 탭으로 이동합니다.
+. 화면 중앙 하단에서 `메타데이터` 메뉴를 누릅니다. 
+. 라벨 옆의 `편집` 을 누릅니다.
 
++
+image::2025_spring/module-08-workingvms/12_Imported_VMs_UI.png[link=self, window=blank, width=100%]
+
+. 아래의 레이블을 붙여넣고 `저장` 을 누릅니다.
 +
 [source,yaml,role=execute]
 ----
-env: webapp
+env=webapp
 ----
 +
-IMPORTANT: 아래 스크린샷처럼 들여쓰기를 정확하게 맞춰야 합니다.
-+
-image::2025_spring/module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
+image::2025_spring/module-08-workingvms/12_Imported_VMs_UI2.png[link=self, window=blank, width=100%]
+
+. 아래 스크린샷처럼 *env=webapp* 레이블이 설정된 것이 확인됩니다.
+
+image::2025_spring/module-08-workingvms/12_Imported_VMs_UI3.png[link=self, window=blank, width=100%]
 
 . VM *winweb02-{user}* 에 대해서도 동일한 과정을 **반복**합니다.
 . 구성 변경 후  *winweb01-{user}* 및 *winweb02-{user}* 가상 머신을 모두 재부팅해야 합니다.
